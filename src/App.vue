@@ -15,6 +15,19 @@ export default {
 </template>
 
 <style >
+#app {
+  margin: 0 auto;
+  padding: 0;
+  width: 100vw;
+}
 
+body {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #211f1f;
+  color: white;
+}
 
 </style>
