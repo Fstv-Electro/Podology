@@ -6,6 +6,7 @@ import HelloWorld from "../components/HelloWorld.vue";
 const HomePage = () => import("../views/HomePage.vue");
 const ContactPage = () => import("../views/ContactPage.vue");
 const Services = () => import("../views/Services.vue");
+const LoginPage = () => import("../views/LoginPage.vue");
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     path: "/services",
     name: "services",
     component: Services,
+  },
+  {
+    path: "/login",
+    name: "LoginPage",
+    component: LoginPage,
   },
 ];
 

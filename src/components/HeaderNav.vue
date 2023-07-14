@@ -18,6 +18,7 @@ export default {
             <router-link to="/">На головну</router-link>
             <router-link to="/services">Послуги</router-link>
             <router-link to="/contacts">Контакти</router-link>
+            <router-link to="/login">Увійти</router-link>
         </nav>
     </div>
 
