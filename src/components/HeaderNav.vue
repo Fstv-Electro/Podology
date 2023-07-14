@@ -15,8 +15,9 @@ export default {
             P&D CENTER
         </p>
         <nav class="nav-links">
-            <router-link to="/">Home</router-link>
-            <router-link to="/contacts">Contacts</router-link>
+            <router-link to="/">На головну</router-link>
+            <router-link to="/services">Послуги</router-link>
+            <router-link to="/contacts">Контакти</router-link>
         </nav>
     </div>
 
@@ -48,11 +49,13 @@ export default {
   background-color: white;
   color: #211f1f;
   padding: 8px;
+  border: 2px solid grey;
   border-radius: 8px;
 }
 
 .nav-links a.router-link-exact-active{
   color: #211f1f;
+  border: none;
   background-color: white;
   padding: 8px;
   border-radius: 8px;
