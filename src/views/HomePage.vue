@@ -201,6 +201,7 @@ export default {
     list-style: none;
     border: 1px solid white;
     border-radius: 8px;
+    background-color: white;
 
     gap: 16px;
 }

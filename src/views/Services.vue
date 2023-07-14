@@ -19,12 +19,13 @@ export default {
                     <li class="type__item">мозолі, натоптиші, тріщини</li>
                     <li class="type__item">бородавки</li>
                     <li class="type__item">забій нігтя та пластини</li>
+                    <li class="type__item">медичний педікюр</li>
                 </ul>
             </li>
             <li class="services__item item__type">
                 <h3 class="type__title">Манікюр та педикюр:</h3>
                 <ul class="type__list">
-                    <li class="type__item">Чистка</li>
+                    <li class="type__item">чистка</li>
                     <li class="type__item">покриття лаком</li>
                     <li class="type__item">покриття гель-лаком</li>
                     <li class="type__item">нарощення</li>
