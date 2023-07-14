@@ -16,9 +16,12 @@ export default {
 
 <style >
 #app {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   margin: 0 auto;
   padding: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 body {
