@@ -104,6 +104,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 16px;
     gap: 32px;
 }
 
@@ -137,6 +138,44 @@ export default {
     border: 2px solid white;
     border-radius: 8px;
 
+}
+
+@media (max-width: 374px) {
+    .service-list {
+        flex-direction: column;
+    }
+
+    .podology__img {
+        max-width: 240px;
+        height: 240px;
+    }
+}
+
+@media (min-width: 374px) and (max-width: 768px) {
+    
+    .service-list {
+        flex-direction: column;
+    }
+
+    .podology__img {
+        width: 240px;
+        height: 300px;
+    }
+
+}
+
+@media (min-width: 678px) and (max-width: 1280px) {
+    
+    .service-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 64px;
+    }
+
+    .podology__img {
+        width: 280px;
+        height: 360px;
+    }
 }
 
 .features-section {
@@ -188,7 +227,42 @@ export default {
 
 .features__img {
     border-radius: 8px;
-    width: 320px;
+    max-width: 320px;
+}
+
+@media (max-width: 374px) {
+
+    .features {
+        flex-direction: column;
+    }
+    .features__img {
+        max-width: 200px;
+        height: 240px;
+    }
+}
+
+@media (min-width: 374px) and (max-width: 768px) {
+
+    .features {
+        flex-direction: column;
+    }
+    .features__img {
+        max-width: 240px;
+        height: 280px;
+    }
+}
+
+@media (min-width: 678px) and (max-width: 1280px) {
+
+    .features {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 64px
+    }
+    .features__img {
+        max-width: 280px;
+        height: 320px;
+    }
 }
 
 .products {

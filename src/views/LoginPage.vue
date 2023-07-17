@@ -1,43 +1,48 @@
 <script>
-import getAuth from 'firebase/auth';
-import signInUserWithEmailAndPassword from 'firebase/auth';
+import { useStore } from 'vuex';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 export default {
     name: 'LoginPage',
-    components: {},
-    data() {
-        return {
-            email: '',
-            password: '',
-            passwordError: '',
+    setup() {
+        const email = ref('');
+        const password = ref('');
+        const error = ref(null);
+        const store = useStore();
+        const router = useRouter()
+
+        const singIn = async() => {
+            try {
+                await store.dispatch('login', { email: email.value, password: password.value });
+                router.push('/');
+            } catch (err) {
+                error.value = err.message;
+            }
         }
+
+        return {singIn, email, password, error}
     },
-    methods: {
-        handleSubmit() {
-            const auth = getAuth();
-            const router = useRouter();
-            signInUserWithEmailAndPassword(auth, this.email, this.password)
-                .then((data) => router.push('/')).catch(error => console.log(error.message));
-        }
-    }
 }
 </script>
 
 <template>
     <div class="container">
         <h2 class="title">Авторізація для адміністратора</h2>
-        <form class="login-form" @submit.prevent="handleSubmit">
+        <form class="login-form" @submit.prevent="singIn">
             <label>
                 Email:
-                <input type="text" required v-model="email" placeholder="приклад@gmail.com"/>
+                <input type="email" required v-model="email" placeholder="приклад@gmail.com"/>
             </label>
             <label>
                 Password:
-                <input type="text" required v-model="password" placeholder="Приклад123"/>
+                <input type="password" required v-model="password" placeholder="Приклад123"/>
             </label>
-            <button type="submit" class="submit-btn">Вхід</button>
+            <button type="submit" value="Login" class="submit-btn">Вхід</button>
         </form>
+    </div>
+    <div v-if="error" class="error-container">
+        {{ error }}
     </div>
 </template>
 
