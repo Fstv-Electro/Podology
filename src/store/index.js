@@ -1,19 +1,24 @@
 import { createStore } from "vuex";
 import router from "../router";
 import { auth } from "../utils/FireBase";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 const store = createStore({
   state: {
     user: null,
+    isLogged: false,
   },
   mutations: {
     SET_USER(state, userData) {
       state.user = userData;
       console.log(state.user, "USER ZAISHOV");
     },
-    CLEAR_USER(state) {
-      state.user = null;
+    SET_IS_LOGGED(state, payload) {
+      state.isLoggedIn = payload;
     },
   },
   actions: {
@@ -22,6 +27,7 @@ const store = createStore({
         const res = await signInWithEmailAndPassword(auth, email, password);
         if (res) {
           context.commit("SET_USER", res.user);
+          router.push("/");
         } else {
           throw new Error("логін не завершився");
         }
@@ -43,20 +49,18 @@ const store = createStore({
       router.push("/");
     },
 
-    async logout({ commit }, details) {
+    async logout(context) {
       await signOut(auth);
-      commit("CLEAR_USER");
+      context.commit("SET_USER", null);
       router.push("/");
     },
-
-    fetchUser({ commit }) {
-      auth.onAuthStateChanged(async (suer) => {
-        if (user === null) {
-          commit("CLEAR_USER", user);
-        }
-      });
-    },
   },
+});
+
+const unsub = onAuthStateChanged(auth, (user) => {
+  store.commit("SET_IS_LOGGED", true);
+  store.commit("SET_USER", user);
+  unsub();
 });
 
 export default store;
